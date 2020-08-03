@@ -4,7 +4,8 @@ UGFX driver for 160x160 Black COG Graphic LCD Display Module w/UC1698 Controller
 
 
 ### Overview ###
--TODO
+- STM32 (VisualGDB)
+- Arduino (PlatformIO)
 
 ### Main Features ###
 ![](https://raw.githubusercontent.com/dretay/UC1698/master/IMG_5088.jpg)
