@@ -1,4 +1,5 @@
 ﻿#include "gfx.h"
+#include "types.h"
 #if GFX_USE_GDISP
 
 
@@ -8,8 +9,10 @@
 #include "../ugfx/src/gdisp/gdisp_driver.h"
 #if defined(STM32F407xx)
 #include "stm32_board_UC1698.h"
+#elif defined(ESP32)
+#include "esp32_board_UC1698.h"
 #else
-#error Unssupported board!
+#error Unsupported board!
 #endif
 
 #ifndef GDISP_SCREEN_HEIGHT
@@ -29,9 +32,23 @@ u8 display_copy_buffer[((GDISP_SCREEN_WIDTH * GDISP_SCREEN_HEIGHT) >> 3)];
 /*===========================================================================*/
 
 
-static void init(void)
-{
+LLDSPEC bool_t gdisp_lld_init(GDisplay *g) {
+	
+	// Initialise the board interface
+	if(!init_board(g))
+	{
+		return FALSE;
+	}
 
+	// Finish Init
+	post_init_board(g);
+
+	// Initialise the GDISP structure
+	g->g.Width = GDISP_SCREEN_WIDTH;
+	g->g.Height = GDISP_SCREEN_HEIGHT;
+	g->g.Orientation = GDISP_ROTATE_0;
+	g->g.Powermode = powerOn;
+	
 	reset();	
 
 	/*power control*/					
@@ -96,27 +113,6 @@ static void init(void)
 	write_command(159);     			//160
 
 	write_command(0xad);     			//display on,select on/off mode.Green Enhance mode disable	
-
-	 	
-}
-LLDSPEC bool_t gdisp_lld_init(GDisplay *g) {
-	
-	// Initialise the board interface
-	if(!init_board(g))
-	{
-		return FALSE;
-	}
-
-	// Finish Init
-	post_init_board(g);
-
-	// Initialise the GDISP structure
-	g->g.Width = GDISP_SCREEN_WIDTH;
-	g->g.Height = GDISP_SCREEN_HEIGHT;
-	g->g.Orientation = GDISP_ROTATE_0;
-	g->g.Powermode = powerOn;
-	
-	init();
 
 	return TRUE;
 }
