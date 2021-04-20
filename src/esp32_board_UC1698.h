@@ -73,7 +73,12 @@ static GFXINLINE bool init_board(GDisplay* g) {
 	pinMode(2, OUTPUT);  // s0
     pinMode(4, OUTPUT);  // s1
     pinMode(15, OUTPUT);  // s1
-
+	const int freq = 5000;
+	const int ledChannel =0;
+	const int resolution = 8;
+	ledcSetup(ledChannel, freq, resolution);
+	ledcAttachPin(33, ledChannel);
+	
 	return true;
 
 }
@@ -86,6 +91,7 @@ static void board_backlight(GDisplay *g, uint8_t percent) {
 	// TODO: Can be an empty function if your hardware doesn't support this
 	(void) g;
 	(void) percent;
+	ledcWrite(0, (percent*(255/100)));
 }
 
 static void board_contrast(GDisplay *g, uint8_t percent) {
@@ -97,7 +103,7 @@ static void board_contrast(GDisplay *g, uint8_t percent) {
 static void board_power(GDisplay *g, powermode_t pwr) {
 	// TODO: Can be an empty function if your hardware doesn't support this
 	(void) g;
-	(void) pwr;
+	(void) pwr;	
 }
 #endif /* GDISP_NEED_CONTROL */
 
