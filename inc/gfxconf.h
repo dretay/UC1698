@@ -29,7 +29,7 @@
 // GOS - One of these must be defined, preferably in your Makefile       //
 ///////////////////////////////////////////////////////////////////////////
 //#define GFX_USE_OS_CHIBIOS                           FALSE
-#define GFX_USE_OS_FREERTOS                          TRUE
+//#define GFX_USE_OS_FREERTOS                          TRUE
 //    #define GFX_FREERTOS_USE_TRACE                   FALSE
 //#define GFX_USE_OS_WIN32                             FALSE
 //#define GFX_USE_OS_LINUX                             FALSE
@@ -41,7 +41,7 @@
 //#define GFX_USE_OS_RTX5                              FALSE
 //#define GFX_USE_OS_CMSIS                             FALSE
 //#define GFX_USE_OS_CMSIS2                            FALSE
-//#define GFX_USE_OS_RAW32                             FALSE
+#define GFX_USE_OS_RAW32                             TRUE
 //#define GFX_USE_OS_ZEPHYR                            FALSE
 //#define GFX_USE_OS_NIOS                              FALSE
 //#define GFX_USE_OS_QT                                FALSE
@@ -56,7 +56,7 @@
 //    #define GFX_CPU_NO_ALIGNMENT_FAULTS              FALSE
 //    #define GFX_CPU_ENDIAN                           GFX_CPU_ENDIAN_UNKNOWN
 //    #define GFX_OS_HEAP_SIZE                         0
-    #define GFX_OS_NO_INIT                           TRUE
+//    #define GFX_OS_NO_INIT                           TRUE
 //    #define GFX_OS_INIT_NO_WARNING                   FALSE
 //    #define GFX_OS_PRE_INIT_FUNCTION                 myHardwareInitRoutine
 //    #define GFX_OS_EXTRA_INIT_FUNCTION               myOSInitRoutine
@@ -96,17 +96,17 @@
 //    #define GDISP_NEED_TEXT_KERNING                  FALSE
 //    #define GDISP_INCLUDE_FONT_UI1                   FALSE
 //    #define GDISP_INCLUDE_FONT_UI2                   FALSE		// The smallest preferred font.
-#define GDISP_INCLUDE_FONT_LARGENUMBERS          TRUE
-#define GDISP_INCLUDE_FONT_DEJAVUSANS10          TRUE
+//#define GDISP_INCLUDE_FONT_LARGENUMBERS          TRUE
+//#define GDISP_INCLUDE_FONT_DEJAVUSANS10          TRUE
 //    #define GDISP_INCLUDE_FONT_DEJAVUSANS12          FALSE
-    #define GDISP_INCLUDE_FONT_DEJAVUSANS16          TRUE
+//    #define GDISP_INCLUDE_FONT_DEJAVUSANS16          TRUE
 //    #define GDISP_INCLUDE_FONT_DEJAVUSANS20          FALSE
-    #define GDISP_INCLUDE_FONT_DEJAVUSANS24          TRUE
+//    #define GDISP_INCLUDE_FONT_DEJAVUSANS24          TRUE
     #define GDISP_INCLUDE_FONT_DEJAVUSANS32          TRUE
     #define GDISP_INCLUDE_FONT_DEJAVUSANSBOLD12      TRUE
-    #define GDISP_INCLUDE_FONT_FIXED_10X20           TRUE
-#define GDISP_INCLUDE_FONT_FIXED_7X14            TRUE
-#define GDISP_INCLUDE_FONT_FIXED_5X8             TRUE
+//    #define GDISP_INCLUDE_FONT_FIXED_10X20           TRUE
+//#define GDISP_INCLUDE_FONT_FIXED_7X14            TRUE
+//#define GDISP_INCLUDE_FONT_FIXED_5X8             TRUE
 //    #define GDISP_INCLUDE_FONT_DEJAVUSANS12_AA       FALSE
 //    #define GDISP_INCLUDE_FONT_DEJAVUSANS16_AA       FALSE
 //    #define GDISP_INCLUDE_FONT_DEJAVUSANS20_AA       FALSE

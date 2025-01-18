@@ -1,11 +1,11 @@
-﻿#include "gfx.h"
+#include "gfx.h"
 #include "types.h"
 #if GFX_USE_GDISP
 
 #define GDISP_DRIVER_VMT GDISPVMT_UC1698
 #include "gdisp_lld_config.h"
 #include "../ugfx/src/gdisp/gdisp_driver.h"
-#if defined(STM32F407xx)
+#if defined(STM32F407xx) || defined(STM32F103xB)
 #include "stm32_board_UC1698.h"
 #elif defined(ESP32)
 #include "esp32_board_UC1698.h"

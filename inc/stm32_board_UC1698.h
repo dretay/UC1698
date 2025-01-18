@@ -1,6 +1,5 @@
 #pragma once
 
-#include "UC1698.h"
 #include "gfx.h"
 #include "stdbool.h"
 #include "types.h"
@@ -11,6 +10,11 @@
 
 #include "string.h"
 #include "ShiftRegister.h"
+
+// UC1689 commands
+static const uint8_t SYSTEM_RESET = 0xE2;
+
+static const uint8_t VBIAS_POTENTIOMETER = 0x81;      //electronic potentionmeter
 
 #define bitSet(value, bit) ((value) |= (1UL << (bit)))
 #define bitClear(value, bit) ((value) &= ~(1UL << (bit)))
@@ -27,50 +31,51 @@
 static u8 CE = 4, CD = 3, RD = 2, WR = 1, RST = 0;
 static u8 pins;
 static void write_command(u8 command)
-{		
+{
 	bitClear(pins, CE);  //cs0
 	bitClear(pins, CD); //cd
 	bitSet(pins, RD);  //wr1
-	bitClear(pins, WR); //wr0	
-		
+	bitClear(pins, WR); //wr0
+
 	ShiftRegister.shift_out(command, pins);
-	
+
 	bitSet(pins, WR);
 	bitSet(pins, CE);
-	ShiftRegister.shift_out(command, pins);	
-	
+	ShiftRegister.shift_out(command, pins);
+
 }
 static void write_data(u8 data)
-{	
+{
 	bitClear(pins, CE);
 	bitSet(pins, CD);
 	bitSet(pins, RD);
-	bitClear(pins, WR);	
-		
+	bitClear(pins, WR);
+
 	ShiftRegister.shift_out(data, pins);
-	
+
 	bitSet(pins, WR);
 	bitSet(pins, CE);
 	ShiftRegister.shift_out(data, pins);
 }
 static void reset(void)
-{	
+{
 	bitSet(pins, RST);
 	ShiftRegister.shift_out(0x00, pins);
-	HAL_Delay(20);         	
+	HAL_Delay(20);
 	bitClear(pins, RST);
 	ShiftRegister.shift_out(0x00, pins);
 	HAL_Delay(20);
 	bitSet(pins, RST);
 	ShiftRegister.shift_out(0x00, pins);
 	HAL_Delay(200);
-	write_command(SYSTEM_RESET); 
-	HAL_Delay(100);   	
+	write_command(SYSTEM_RESET);
+//	write_command(0x62);
+	HAL_Delay(100);
 }
 
 static GFXINLINE bool init_board(GDisplay* g) {
-	(void) g; 
-		
+	(void) g;
+
 	return true;
 
 }
