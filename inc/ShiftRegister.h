@@ -1,6 +1,6 @@
 #pragma once
 
-#if defined(STM32F407xx) || defined(STM32F103xB)
+#if defined(STM32F407xx) || defined(STM32F103xB)|| defined(STM32F411xE)
 #include "main.h"
 #elif defined(ESP32)
 #include "Arduino.h"
