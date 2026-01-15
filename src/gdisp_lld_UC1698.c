@@ -357,7 +357,6 @@ LLDSPEC void gdisp_lld_draw_pixel(GDisplay* g) {
   coord_t x_coord, y_coord;
   translate_coordinates(g, &x_coord, &y_coord);
 
-  DWORD address = 1;
   WORD w_temp;
   u8* p_local_ram_buffer;
   u8 display_working_byte_value;

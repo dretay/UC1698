@@ -90,12 +90,14 @@ static void board_backlight(GDisplay *g, uint8_t percent) {
 	(void) percent;
 }
 
+__attribute__((unused))
 static void board_contrast(GDisplay *g, uint8_t percent) {
 	// TODO: Can be an empty function if your hardware doesn't support this
 	(void) g;
 	(void) percent;
 }
 
+__attribute__((unused))
 static void board_power(GDisplay *g, powermode_t pwr) {
 	// TODO: Can be an empty function if your hardware doesn't support this
 	(void) g;
