@@ -25,7 +25,7 @@
 #error Unsupported board!
 #endif
 
-extern SPI_HandleTypeDef hspi1;
+extern volatile SPI_HandleTypeDef hspi1;
 static void initialize() {}
 
 static void shift_out(u8 low_byte, u8 high_byte) {

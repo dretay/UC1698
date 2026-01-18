@@ -29,7 +29,7 @@ static const uint8_t VBIAS_POTENTIOMETER = 0x81;      //electronic potentionmete
 //
 //#define GPIO_ReadInputData() (uint16_t)GPIOD->IDR
 static u8 CE = 4, CD = 3, RD = 2, WR = 1, RST = 0;
-static u8 pins;
+static volatile u8 pins;
 static void write_command(u8 command)
 {
 	bitClear(pins, CE);  //cs0
